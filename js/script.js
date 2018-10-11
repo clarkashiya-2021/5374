@@ -88,8 +88,8 @@ var TrashModel = function(_lable, _cell, remarks) {
     } else if (this.dayCell[j].length == 2 && this.dayCell[j].substr(0,1) == "*") {
     } else {
       // 不定期回収の場合（YYYYMMDD指定）
-      result_text = "不定期 ";
-      this.regularFlg = 1;  // 定期回収フラグオフ（1（表示しない）に変更星野）
+      result_text = ""; // 不定期→nullに変更星野）
+      this.regularFlg = 0;  // 定期回収フラグオフ（1（表示しない）に変更星野）
     }
   }
   this.dayLabel = result_text;
