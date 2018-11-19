@@ -14,6 +14,9 @@ var AreaModel = function() {
   this.calcMostRect = function() {
     for (var i = 0; i < this.trash.length; i++) {
       this.trash[i].calcMostRect(this);
+      if (this.trash[i].mostRecent == undefined) {  // 20181119-20:34 山下追記分
+        this.trash.splice(i, 1);                    // あるカテゴリで直近の日付がない（空白だったり過去の日付だけ）場合は
+      }                                             // そのカテゴリを使わない（配列から削除）
     }
   }
   /**
