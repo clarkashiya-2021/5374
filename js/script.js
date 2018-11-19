@@ -11,11 +11,21 @@ var AreaModel = function() {
   /**
   各ゴミのカテゴリに対して、最も直近の日付を計算します。
 */
+/* ------------------山下追加分ここから------------------*/
+//calcMostRectメソッドの中身を大きく変更。各ゴミのカテゴリに対して、直近の日付が存在しない場合はそのカテゴリを除外する
   this.calcMostRect = function() {
+    var del_list = [];
     for (var i = 0; i < this.trash.length; i++) {
       this.trash[i].calcMostRect(this);
+      if (this.trash[i].mostRecent == undefined) {
+        del_list.push(i);
+      }
+    }
+    for (var j = del_list.length - 1; j >= 0; j--) {
+      this.trash.splice(del_list[j], 1);
     }
   }
+/* ------------------山下追加分ここまで------------------*/
   /**
     休止期間（主に年末年始）かどうかを判定します。
   */
