@@ -21,23 +21,25 @@
     <link href="css/custom.css" rel="stylesheet" media="screen" />
     
     <style type="text/css">
-html, body {
-  margin: 0;
-  padding: 0;
-}
-html {
-  display: table;
-}
-body {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-}
+body
+    {
+     margin:0px;          /* ページ全体のmargin */
+     padding:0px;         /* ページ全体のpadding */
+     text-align:center;   /* 下記のautoに未対応用のセンタリング */
+    }
+
+#main
+    {
+     margin-left:auto;    /* 左側マージンを自動的に空ける */
+     margin-right:auto;   /* 右側マージンを自動的に空ける */
+     text-align:left;     /* 中身を左側表示に戻す */
+     width:650px;         /* 幅を決定する */
+    }
 </style>
     
   </head>
 <body>
-<div>
+<div id="main">
   <a href="index2.html"><img src="./img/opening.jpg" alt="ashiya x clark"></a>
 </div>
 </body>
