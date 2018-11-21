@@ -18,6 +18,10 @@
     <link href="css/custom.css" rel="stylesheet" media="screen" />
   </head>
   <body>
+    <input type="text" id="keyword" placeholder="検索したいごみの名前を入力">
+  	<button onclick="getCSV()">検索</button>
+
+  <div id="result"></div>
     <!--エリア選択は最上段に移動（星野）-->
   <select class="form-control" id="select_area"></select>
     
@@ -89,6 +93,44 @@ CfKは市民のための組織です。行政や民間企業の影響を受け�
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-43926409-1', '5374.jp');
   ga('send', 'pageview');
+
+//検索部分
+function getCSV(){
+      var req = new XMLHttpRequest();
+      req.open("get","data/target.csv", true);
+      req.send(null);
+
+      req.onload = function(){
+        search(req.responseText);
+        }
+      }
+
+      function search(target) {
+      var keyword = document.getElementById("keyword").value;
+      if (keyword != ""){
+        var lines = target.split("\n");
+        var count = 0;
+        var output = "";
+
+        for (var i = 1; i < lines.length; i++){
+          var cells = lines[i].split(",");
+          if (cells.length > 1 && cells[1].indexOf(keyword) != -1){
+            output += "<p class='gomi'>";
+            output += "名前：" + cells[1] + "<br>";
+            output += "種類：" + cells[0] + "<br>";
+            output += "備考：" + cells[2];
+            output += "</p>";
+            count++;
+          }
+        }
+if (count == 0) {
+  output += "見つかりませんでした。";
+}
+        document.getElementById("result").innerHTML = output;
+      }
+
+      }
+
   </script>
   </body>
 </html>
