@@ -15,11 +15,15 @@ body {
 /*#accordion-group3{background-color:  #2dc7aa;}*//* びん */
 
 #accordion a {    
-    color: #888888;
+    color: #ffffff;
     text-decoration: none;
 }
 #accordion a:hover {
     color: white;
+    text-decoration: none;
+}
+#accordion a .link {    
+    color: #888888;
     text-decoration: none;
 }
 
