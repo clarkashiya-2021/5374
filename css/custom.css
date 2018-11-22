@@ -14,7 +14,11 @@ body {
 /*#accordion-group2{background-color:  #ea3b13;}*//* 資源 */
 /*#accordion-group3{background-color:  #2dc7aa;}*//* びん */
 
-#accordion a, #accordion a:hover {
+#accordion a {    
+    color: #888888;
+    text-decoration: none;
+}
+#accordion a:hover {
     color: white;
     text-decoration: none;
 }
@@ -52,8 +56,6 @@ a.accordion-toggle-top {
     font-size: 16px;
     margin-top: 15px;
 }
-
-#accordion3 a {text-decoration: none}
 
 #accordion3 #caption {
     font-size: 12px;
