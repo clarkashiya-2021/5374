@@ -1,5 +1,8 @@
 /* Custom button
 -------------------------------------------------- */
+
+a {text-decoration: none}
+
 body {
     font-family: ".HiraKakuInterface-W1", 'Lucida Grande',
     'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3',
