@@ -18,12 +18,12 @@ body {
     color: #ffffff;
     text-decoration: none;
 }
-#accordion a:hover {
-    color: white;
-    text-decoration: none;
-}
 #accordion a .link {    
     color: #888888;
+    text-decoration: none;
+}
+#accordion a:hover {
+    color: white;
     text-decoration: none;
 }
 
