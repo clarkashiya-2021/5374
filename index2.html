@@ -105,36 +105,54 @@ CfKは市民のための組織です。行政や民間企業の影響を受け�
 
 //検索部分
 
-function getCSV(){
-      var req = new XMLHttpRequest();
-      req.open("get","data/target.csv", true);
-      req.send(null);
-      req.onload = function(){
-        search(req.responseText);
-        }
-      }
-      function search(target) {
-      var keyword = document.getElementById("keyword").value;
-      if (keyword != ""){
-        var lines = target.split("\n");
-        var count = 0;
-        var output = "";
-        for (var i = 1; i < lines.length; i++){
-          var cells = lines[i].split(",");
-          if (cells.length > 1 && (cells[1].indexOf(keyword) != -1 || cells[4].indexOf(keyword) != -1)){
-            output += "<p class='gomi'>";
-            output += "名前：" + cells[1] + "<br>";
-            output += "種類：" + cells[0] + "<br>";
-            output += "備考：" + cells[2];
-            output += "</p>";
-            count++;
+function getCSV() {
+        var req = new XMLHttpRequest();
+        req.open("get", "data/target.csv", true);
+        req.send(null);
+
+        req.onload = function() {
+          var req2 = new XMLHttpRequest();
+          req2.open("get", "data/description.csv", true);
+          req2.send(null);
+
+          req2.onload = function() {
+            search(req.responseText, req2.responseText);
           }
+
         }
-if (count == 0) {
-  output += "見つかりませんでした。";
-}
-        document.getElementById("result").innerHTML = output;
       }
+      function search(target, description) {
+        var keyword = document.getElementById("keyword").value;
+        if (keyword != "") {
+          var lines = target.split("\n");
+          var lines2 = description.split("\n");
+          var count = 0;
+          var output = "";
+
+          for (var i = 1; i < lines.length; i++) {
+            var cells = lines[i].split(",");
+            if (cells.length > 1 && (cells[1].indexOf(keyword) != -1 || cells[4].indexOf(keyword) != -1)) {
+              var bgcolor;
+              for (var j = 1; j < lines2.length; j++){
+                var cells2 = lines2[j].split(",");
+                if (cells[0] == cells2[0]){
+                  bgcolor = cells2[4];
+
+                }
+              }
+              output += "<p class='gomi' style='background-color: " + bgcolor + ";'>";
+              output += "名前：" + cells[1] + "<br>";
+              output += "種類：" + cells[0] + "<br>";
+              output += "</p>";
+              count++;
+            }
+          }
+
+          if (count == 0) {
+            output += "見つかりませんでした。";
+          }
+          document.getElementById("result").innerHTML = output;
+        }
       }
   </script>
   </body>
