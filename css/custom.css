@@ -165,3 +165,9 @@ a.accordion-toggle-top:hover {
 #search-box {
     text-align: center;
 }
+
+p.gomi {
+  margin: 0 0 1px;
+  padding: 3px;
+  color: white;
+}
