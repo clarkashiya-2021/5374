@@ -19,10 +19,10 @@
   </head>
   <body>
     
-  <div id="search-box">
+  <form id="search-box" onsubmit="return false">
     <input type="text" id="keyword" placeholder="検索したいごみの名前を入力" size="36">
   	<button onclick="getCSV()">検索</button>
-    </div>
+    </form>
 
   <div id="result"></div>
   <style id="accordion-style" type="text/css"></style>
