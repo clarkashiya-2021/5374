@@ -102,26 +102,24 @@ CfKは市民のための組織です。行政や民間企業の影響を受け�
   ga('send', 'pageview');
 
 //検索部分
+
 function getCSV(){
       var req = new XMLHttpRequest();
       req.open("get","data/target.csv", true);
       req.send(null);
-
       req.onload = function(){
         search(req.responseText);
         }
       }
-
       function search(target) {
       var keyword = document.getElementById("keyword").value;
       if (keyword != ""){
         var lines = target.split("\n");
         var count = 0;
         var output = "";
-
         for (var i = 1; i < lines.length; i++){
           var cells = lines[i].split(",");
-          if (cells.length > 1 && cells[1].indexOf(keyword) != -1){
+          if (cells.length > 1 && (cells[1].indexOf(keyword) != -1 || cells[4].indexOf(keyword) != -1)){
             output += "<p class='gomi'>";
             output += "名前：" + cells[1] + "<br>";
             output += "種類：" + cells[0] + "<br>";
@@ -135,9 +133,7 @@ if (count == 0) {
 }
         document.getElementById("result").innerHTML = output;
       }
-
       }
-
   </script>
   </body>
 </html>
