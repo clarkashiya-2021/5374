@@ -152,6 +152,10 @@ function getCSV() {
               var bgcolor;
               for (var j = 1; j < lines2.length; j++){
                 var cells2 = lines2[j].split(",");
+                //description.csvのlabel列で「(8:30まで)」のような括弧書きがある場合、「(」以降を除去
+                if (cells2[0].indexOf("(") != -1) {
+                  cells2[0] = cells2[0].substring(0, cells2[0].indexOf("("));
+                }
                 if (cells[0] == cells2[0]){
                   bgcolor = cells2[4];
 
